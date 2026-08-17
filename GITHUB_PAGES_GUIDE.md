@@ -9,6 +9,9 @@ This invitation is a static website. Visitors can view it, open the animated inv
 - `script.js` stores the editable invitation text.
 - `rsvp.html` is the RSVP form page.
 - `rsvp.js` sends RSVP submissions to your chosen endpoint.
+- `godparent.html` is the separate godparent invitation page.
+- `godparent.js` sends godparent confirmations to your chosen endpoint.
+- `godparent-confirmation.html` is the thank-you page after a godparent responds.
 - `images/` holds the background art and Melinoe's photos.
 
 ## Editing The Invitation
@@ -49,6 +52,46 @@ Once connected, each RSVP submission includes:
 - Optional message
 
 That lets you keep a raw response list and calculate total headcount from `totalPartySize`.
+
+## Godparent Confirmation Storage
+
+The godparent invitation page uses the same Apps Script endpoint, but it sends a different payload so your script can store it in a separate tab or filter it cleanly.
+
+Each godparent confirmation sends:
+
+- `formType` as `godparent`
+- `submittedAt`
+- `invitedName`
+- `fullName`
+- `contactInfo`
+- `attendance`
+- `role`
+- `message`
+
+To make the main invitation page auto-fill the godparents list from confirmed responses, your Apps Script should also support:
+
+- `GET .../exec?type=godparents`
+
+That request should return JSON in this shape:
+
+```json
+{
+  "godparents": [
+    "Sample Ninang",
+    "Sample Ninong"
+  ]
+}
+```
+
+Only include the names of people who accepted the invitation. The main page already reads that response and shows those names automatically.
+
+## Sending A Godparent Link
+
+You can send a personalized godparent page by adding a query string to the link:
+
+`godparent.html?name=Juan%20Dela%20Cruz`
+
+That pre-fills the invited person's name on the page and in the form. Visitors can confirm their role, and once your Apps Script returns the confirmed list, the public invitation page updates the displayed godparents automatically.
 
 ## GitHub Pages
 
