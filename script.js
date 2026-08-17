@@ -13,6 +13,7 @@ const defaults = {
 };
 
 const storageKey = "baptismInvitationTemplate";
+const openedKey = "baptismInvitationOpened";
 const params = new URLSearchParams(window.location.search);
 const canEdit = params.get("edit") === "1";
 
@@ -29,6 +30,30 @@ function saveState(state) {
 }
 
 let state = loadState();
+
+function openInvitation(skipAnimation = false) {
+    const openingScreen = document.querySelector("[data-opening-screen]");
+
+    document.body.classList.add("invitation-opened");
+    sessionStorage.setItem(openedKey, "1");
+
+    if (!openingScreen) {
+        return;
+    }
+
+    if (skipAnimation) {
+        openingScreen.hidden = true;
+        return;
+    }
+
+    openingScreen.classList.add("is-opening");
+    window.setTimeout(() => {
+        openingScreen.classList.add("is-open");
+    }, 900);
+    window.setTimeout(() => {
+        openingScreen.hidden = true;
+    }, 1650);
+}
 
 function render() {
     document.body.dataset.theme = state.theme;
@@ -82,7 +107,10 @@ function bindEditor() {
         return;
     }
 
+    openInvitation(true);
     openButton.hidden = false;
+    panel.hidden = false;
+
     openButton.addEventListener("click", () => {
         panel.hidden = false;
     });
@@ -115,6 +143,19 @@ function bindEditor() {
     });
 }
 
+function bindOpeningScreen() {
+    const openButton = document.querySelector("[data-open-invitation]");
+
+    if (canEdit || sessionStorage.getItem(openedKey) === "1") {
+        openInvitation(true);
+        return;
+    }
+
+    openButton.addEventListener("click", () => {
+        openInvitation();
+    });
+}
+
 function revealSections() {
     const sections = document.querySelectorAll("main section");
 
@@ -139,6 +180,7 @@ function revealSections() {
 }
 
 bindThemeControls();
+bindOpeningScreen();
 bindEditor();
 render();
 revealSections();
