@@ -1,73 +1,72 @@
 # Baptism Invitation GitHub Pages Guide
 
-This invitation is a static website. That means visitors can view it, choose a theme, and click links, but they cannot save edits to your published files.
+This invitation is a static website. Visitors can view it, open the animated invitation, click directions, open the RSVP form, and browse the photos, but they cannot edit the published site.
 
 ## Files
 
-- `index.html` is the page structure.
-- `styles.css` controls the layout and themes.
-- `script.js` stores the invitation text and runs the theme/editor behavior.
-- `images/baptism-watercolor-hero.png` is the hero background.
+- `index.html` is the invitation page.
+- `styles.css` controls the classic gold styling and layout.
+- `script.js` stores the editable invitation text.
+- `rsvp.html` is the RSVP form page.
+- `rsvp.js` sends RSVP submissions to your chosen endpoint.
+- `images/` holds the background art and Melinoe's photos.
 
 ## Editing The Invitation
 
 1. Open `index.html` in your browser.
-2. To show the owner editor, add `?edit=1` to the end of the address.
+2. Add `?edit=1` to the end of the address.
 3. Example local address: `index.html?edit=1`.
-4. Change the names, date, time, places, RSVP note, links, and godparents.
+4. Update the text in the editor panel.
 5. Click `Copy Saved Data`.
 6. Open `script.js`.
-7. Find the first block that starts with `const defaults = {`.
+7. Find the block that starts with `const defaults = {`.
 8. Replace the whole object, from `{` through the matching `}`, with your copied data.
-9. Save the file.
 
-Your guests should receive the normal page link without `?edit=1`.
+The current date and time are placeholders because they were not provided yet, so you should update those before publishing.
 
-## Opening Animation
+## RSVP Storage
 
-Guests first see an animated invitation cover. They click `Open Invitation` to reveal the full page.
+The RSVP page is already built, but GitHub Pages cannot store form submissions by itself.
 
-When you use `?edit=1`, the opening animation is skipped so you can edit the fields right away.
+Your response sheet is:
 
-## Creating It On GitHub
+`https://docs.google.com/spreadsheets/d/1AQc45OvlTVjf67y8ygLsjK6eE8tf1qIknn-o8iasG7o/edit?usp=sharing`
 
-1. Create a GitHub account at `github.com`.
-2. Click the `+` button in the top-right corner.
-3. Choose `New repository`.
-4. Name it something like `baptism-invitation`.
-5. Set it to `Public`.
-6. Click `Create repository`.
-7. Click `uploading an existing file`.
-8. Drag in everything inside this `baptism-invitation` folder.
-9. Click `Commit changes`.
-10. Go to `Settings`.
-11. Go to `Pages`.
-12. Under `Build and deployment`, choose:
-    - Source: `Deploy from a branch`
-    - Branch: `main`
-    - Folder: `/root`
-13. Click `Save`.
+To make guest responses save into that sheet, set `RSVP_ENDPOINT` inside `rsvp.js` to a working form receiver URL. That receiver can point to:
 
-GitHub will show your website link after a short wait. It will look like:
+- A Google Apps Script that writes into a Google Sheet
+- A hosted form service that stores submissions in a table
+- Any endpoint that accepts JSON and saves the response list
 
-`https://YOUR-GITHUB-USERNAME.github.io/baptism-invitation/`
+Once connected, each RSVP submission includes:
 
-## Updating Later
+- Guest name
+- Contact details
+- Attendance status
+- Whether they are bringing someone else
+- Additional guest count
+- Guest names
+- Optional message
 
-1. Go to your repository on GitHub.
-2. Click the file you want to change, usually `script.js`.
-3. Click the pencil icon.
-4. Edit the text.
-5. Click `Commit changes`.
-6. Wait a minute for GitHub Pages to refresh.
+That lets you keep a raw response list and calculate total headcount from `totalPartySize`.
 
-## Theme Options
+## GitHub Pages
 
-Guests can use the theme bar at the top of the page:
+1. Create a GitHub repository.
+2. Upload everything inside this `baptism-invitation` folder.
+3. Commit the files.
+4. Open the repository `Settings`.
+5. Open `Pages`.
+6. Set Source to `Deploy from a branch`.
+7. Choose branch `main` and folder `/root`.
+8. Save.
 
-- Blush Garden
-- Sage Chapel
-- Sky Grace
-- Classic Gold
+After GitHub finishes publishing, your website address will look like:
 
-The selected theme is saved only in that person's browser.
+`https://YOUR-GITHUB-USERNAME.github.io/REPOSITORY-NAME/`
+
+## Notes
+
+- The page is locked to the Classic Gold theme.
+- The guest RSVP page is `rsvp.html`.
+- Guests should receive the normal invitation link, not the `?edit=1` version.
