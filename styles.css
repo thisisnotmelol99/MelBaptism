@@ -272,8 +272,7 @@ a {
 }
 
 h1,
-h2,
-h3 {
+h2 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
     letter-spacing: 0;
@@ -350,22 +349,15 @@ section {
 }
 
 .intro-band,
-.rsvp,
-.attire-section,
-.gift-section {
+.rsvp {
+    max-width: 780px;
     text-align: center;
 }
 
-.intro-band,
-.rsvp {
-    max-width: 780px;
-}
-
 .intro-band p:last-child,
-.rsvp p:last-child,
-.attire-section p,
-.gift-section p {
-    margin-top: 18px;
+.rsvp p:last-child {
+    margin: 18px auto 0;
+    max-width: 670px;
     color: var(--muted);
     font-size: 1.05rem;
 }
@@ -386,14 +378,11 @@ section {
 }
 
 .details-grid article,
-.gallery-card,
-.palette-card,
-.gift-card,
-.attire-guidance article {
-    padding: clamp(18px, 4vw, 28px);
+.gallery-card {
+    padding: clamp(22px, 4vw, 38px);
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.72);
+    background: rgba(255, 255, 255, 0.7);
     box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
 }
 
@@ -424,11 +413,26 @@ section {
     border-radius: 6px;
 }
 
+.attire-section,
+.gift-section {
+    text-align: center;
+}
+
 .palette-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
     margin-top: 28px;
+}
+
+.palette-card,
+.gift-card,
+.attire-guidance article {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
 }
 
 .palette-card strong,
@@ -440,12 +444,14 @@ section {
 
 .palette-card strong,
 .attire-guidance h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
     font-size: 1.5rem;
     color: var(--accent-strong);
 }
 
 .palette-card span:last-child,
-.attire-guidance p:last-child {
+.attire-guidance p:last-child,
+.gift-section p {
     color: var(--muted);
 }
 
@@ -468,6 +474,30 @@ section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
     margin-top: 24px;
+}
+
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.gift-card {
+    padding: 14px;
+}
+
+.gift-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.gift-card.is-hidden,
+.gift-grid.is-hidden {
+    display: none;
 }
 
 .godparents {
@@ -522,30 +552,6 @@ section {
 .schedule strong {
     margin-bottom: 10px;
     color: var(--accent-strong);
-}
-
-.gift-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-    margin-top: 28px;
-}
-
-.gift-card {
-    padding: 14px;
-}
-
-.gift-card img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: contain;
-    border-radius: 6px;
-    background: #fff;
-}
-
-.gift-card.is-hidden,
-.gift-grid.is-hidden {
-    display: none;
 }
 
 footer {
@@ -651,7 +657,7 @@ select {
     width: min(1020px, 100%);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
     gap: 18px;
 }
 
@@ -662,12 +668,6 @@ select {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.76);
     box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
-}
-
-.rsvp-card {
-    max-width: 760px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .rsvp-card form {
@@ -702,6 +702,66 @@ select {
 .back-link {
     display: inline-flex;
     margin-bottom: 18px;
+}
+
+.invite-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper-strong);
+    color: var(--accent-strong);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.invite-badge strong {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.15rem;
+}
+
+.note-panel {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(239, 225, 186, 0.24);
+}
+
+.note-panel p {
+    margin: 0;
+}
+
+.confirmation-shell {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 32px 16px;
+}
+
+.confirmation-card {
+    width: min(640px, 100%);
+    padding: clamp(28px, 5vw, 42px);
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: var(--shadow);
+}
+
+.confirmation-card p {
+    color: var(--muted);
+}
+
+.confirmation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 22px;
 }
 
 .hidden-field {
