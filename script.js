@@ -12,8 +12,8 @@ const defaults = {
     godparents: "To be announced",
     ceremonyLink: "https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu",
     rsvpLink: "rsvp.html",
-    giftQrOne: "",
-    giftQrTwo: "",
+    giftQrOne: "images/QR Gotyme.jfif",
+    giftQrTwo: "images/QR Vybe.jfif",
     theme: "gold"
 };
 
