@@ -7,9 +7,13 @@ const defaults = {
     rsvp: "Please RSVP using the form so we can keep an accurate guest list and headcount.",
     attireNote: "We would love for everyone to come in neat church attire with a graceful, celebratory feel. Soft neutrals, warm beige, champagne, cream, and gentle earth tones are warmly encouraged, while very casual wear and loud prints are best avoided.",
     contactNote: "Please RSVP through the form. For any questions or clarifications, message Aris or Jovel in Messenger.",
+    blessingNote: "Your presence and prayers are more than enough. If you would also like to bless Melinoe with a monetary gift, you may use the QR codes below.",
+    giftNote: "Thank you for celebrating this meaningful day with our family. We will clear the RSVP list after the event.",
     godparents: "To be announced",
     ceremonyLink: "https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu",
     rsvpLink: "rsvp.html",
+    giftQrOne: "",
+    giftQrTwo: "",
     theme: "gold"
 };
 
@@ -75,6 +79,35 @@ function render() {
     document.querySelectorAll("[data-link]").forEach((element) => {
         element.href = state[element.dataset.link] || "#";
     });
+
+    const giftMappings = [
+        { key: "giftQrOne", slot: "one" },
+        { key: "giftQrTwo", slot: "two" }
+    ];
+    let visibleGiftCards = 0;
+
+    giftMappings.forEach(({ key, slot }) => {
+        const card = document.querySelector(`[data-gift-card='${slot}']`);
+        const image = document.querySelector(`[data-gift-image='${slot}']`);
+        if (!card || !image) {
+            return;
+        }
+
+        const src = (state[key] || "").trim();
+        if (src) {
+            image.src = src;
+            card.classList.remove("is-hidden");
+            visibleGiftCards += 1;
+        } else {
+            image.removeAttribute("src");
+            card.classList.add("is-hidden");
+        }
+    });
+
+    const giftGrid = document.querySelector("[data-gift-grid]");
+    if (giftGrid) {
+        giftGrid.classList.toggle("is-hidden", visibleGiftCards === 0);
+    }
 
     const godparentList = document.querySelector("[data-list='godparents']");
     if (godparentList) {
