@@ -23,6 +23,12 @@ This invitation is a static website. That means visitors can view it, choose a t
 
 Your guests should receive the normal page link without `?edit=1`.
 
+## Opening Animation
+
+Guests first see an animated invitation cover. They click `Open Invitation` to reveal the full page.
+
+When you use `?edit=1`, the opening animation is skipped so you can edit the fields right away.
+
 ## Creating It On GitHub
 
 1. Create a GitHub account at `github.com`.
