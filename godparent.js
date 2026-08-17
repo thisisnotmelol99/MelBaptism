@@ -34,7 +34,7 @@ function serializeGodparentForm(form) {
         fullName: String(data.get("fullName") || "").trim(),
         contactInfo: String(data.get("contactInfo") || "").trim(),
         attendance: String(data.get("attendance") || "").trim(),
-        role: String(data.get("role") || "").trim(),
+        role: "Godparent",
         message: String(data.get("message") || "").trim()
     };
 }
