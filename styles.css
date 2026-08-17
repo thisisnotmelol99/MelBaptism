@@ -1,42 +1,14 @@
 :root {
-    --paper: #fffaf3;
-    --ink: #3b312d;
-    --muted: #776a62;
-    --accent: #b9787e;
-    --accent-strong: #8c4f57;
-    --accent-soft: #f2dfe0;
-    --line: rgba(70, 55, 48, 0.16);
-    --shadow: 0 18px 60px rgba(66, 45, 34, 0.16);
-}
-
-body[data-theme="sage"] {
-    --paper: #fbfbf4;
-    --ink: #26362f;
-    --muted: #64746a;
-    --accent: #78947d;
-    --accent-strong: #43604b;
-    --accent-soft: #dfe9df;
-    --line: rgba(52, 80, 62, 0.18);
-}
-
-body[data-theme="blue"] {
-    --paper: #f8fbff;
-    --ink: #263241;
-    --muted: #637387;
-    --accent: #7aa0bd;
-    --accent-strong: #416d8d;
-    --accent-soft: #dceaf4;
-    --line: rgba(48, 78, 102, 0.18);
-}
-
-body[data-theme="gold"] {
     --paper: #fffdf7;
+    --paper-strong: #f5ecd7;
     --ink: #332e25;
     --muted: #746b58;
     --accent: #c59a4a;
     --accent-strong: #88652a;
-    --accent-soft: #f4ead2;
+    --accent-soft: #efe1ba;
     --line: rgba(117, 88, 39, 0.2);
+    --shadow: 0 18px 60px rgba(66, 45, 34, 0.16);
+    --panel: rgba(255, 251, 243, 0.78);
 }
 
 * {
@@ -54,7 +26,10 @@ html {
 body {
     margin: 0;
     color: var(--ink);
-    background: var(--paper);
+    background:
+        radial-gradient(circle at top left, rgba(197, 154, 74, 0.12), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(136, 101, 42, 0.14), transparent 28%),
+        var(--paper);
     font-family: "Inter", Arial, sans-serif;
     line-height: 1.6;
 }
@@ -71,7 +46,7 @@ body::before {
     background-image: url("images/baptism-watercolor-hero.png");
     background-position: center top;
     background-size: cover;
-    opacity: 0.18;
+    opacity: 0.16;
 }
 
 a {
@@ -87,7 +62,9 @@ a {
     display: grid;
     place-items: center;
     padding: 28px;
-    background-image: linear-gradient(rgba(255, 250, 243, 0.5), rgba(255, 250, 243, 0.86)), url("images/baptism-watercolor-hero.png");
+    background:
+        linear-gradient(rgba(255, 248, 236, 0.52), rgba(255, 249, 240, 0.88)),
+        url("images/baptism-watercolor-hero.png");
     background-position: center;
     background-size: cover;
     transition: opacity 700ms ease, visibility 700ms ease;
@@ -127,7 +104,7 @@ a {
 }
 
 .envelope-back {
-    background: linear-gradient(145deg, #fff7ee, var(--accent-soft));
+    background: linear-gradient(145deg, #fffaf0, var(--accent-soft));
     border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
@@ -160,25 +137,25 @@ a {
 .envelope-left {
     z-index: 3;
     clip-path: polygon(0 0, 52% 50%, 0 100%);
-    background: linear-gradient(125deg, #fff2e5, var(--accent-soft));
+    background: linear-gradient(125deg, #fff4df, var(--accent-soft));
 }
 
 .envelope-right {
     z-index: 3;
     clip-path: polygon(100% 0, 48% 50%, 100% 100%);
-    background: linear-gradient(235deg, #fff7ef, var(--accent-soft));
+    background: linear-gradient(235deg, #fff9ee, var(--accent-soft));
 }
 
 .envelope-bottom {
     z-index: 4;
     clip-path: polygon(0 100%, 50% 42%, 100% 100%);
-    background: linear-gradient(0deg, #fff5ea, var(--accent-soft));
+    background: linear-gradient(0deg, #fff0d2, var(--accent-soft));
 }
 
 .envelope-flap {
     z-index: 5;
     clip-path: polygon(0 0, 50% 58%, 100% 0);
-    background: linear-gradient(180deg, #fff9f2, var(--accent-soft));
+    background: linear-gradient(180deg, #fff8e8, var(--accent-soft));
     transform-origin: top center;
     transition: transform 800ms cubic-bezier(.2, .8, .2, 1), z-index 800ms step-end;
 }
@@ -239,7 +216,7 @@ a {
     height: 22px;
     border-radius: 80% 0 80% 0;
     background: rgba(255, 255, 255, 0.82);
-    box-shadow: 0 0 0 1px rgba(185, 120, 126, 0.12);
+    box-shadow: 0 0 0 1px rgba(197, 154, 74, 0.16);
     animation: petal-fall 9s linear infinite;
 }
 
@@ -269,19 +246,21 @@ a {
     display: grid;
     place-items: center;
     padding: 88px 20px 48px;
-    background-image: linear-gradient(rgba(255, 250, 243, 0.46), rgba(255, 250, 243, 0.78)), url("images/baptism-watercolor-hero.png");
+    background-image:
+        linear-gradient(rgba(255, 248, 236, 0.42), rgba(255, 249, 240, 0.8)),
+        url("images/baptism-watercolor-hero.png");
     background-position: center;
     background-size: cover;
 }
 
 .hero-overlay {
-    width: min(760px, 100%);
+    width: min(780px, 100%);
     text-align: center;
     padding: clamp(24px, 5vw, 54px);
     border: 1px solid rgba(255, 255, 255, 0.72);
-    background: rgba(255, 255, 255, 0.58);
+    background: var(--panel);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
 }
 
 .script {
@@ -302,7 +281,7 @@ h2 {
 
 h1 {
     margin-top: 8px;
-    font-size: clamp(3.2rem, 12vw, 7.8rem);
+    font-size: clamp(3rem, 11vw, 7.4rem);
     font-weight: 700;
 }
 
@@ -329,13 +308,20 @@ h2 {
     font-weight: 700;
 }
 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 26px;
+}
+
 .button,
 .editor-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
-    margin-top: 24px;
+    min-height: 46px;
     padding: 11px 18px;
     border: 1px solid var(--accent-strong);
     border-radius: 6px;
@@ -346,6 +332,7 @@ h2 {
     cursor: pointer;
 }
 
+.secondary-button,
 .button.secondary {
     background: transparent;
     color: var(--accent-strong);
@@ -356,13 +343,14 @@ main {
 }
 
 section {
-    width: min(1040px, calc(100% - 32px));
+    width: min(1080px, calc(100% - 32px));
     margin: 0 auto;
     padding: clamp(48px, 8vw, 88px) 0;
 }
 
-.intro-band {
-    max-width: 760px;
+.intro-band,
+.rsvp {
+    max-width: 780px;
     text-align: center;
 }
 
@@ -389,11 +377,12 @@ section {
     gap: 18px;
 }
 
-.details-grid article {
+.details-grid article,
+.gallery-card {
     padding: clamp(22px, 4vw, 38px);
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.66);
+    background: rgba(255, 255, 255, 0.7);
     box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
 }
 
@@ -401,8 +390,30 @@ section {
     font-size: clamp(2rem, 4vw, 3.2rem);
 }
 
-.godparents,
-.rsvp {
+.gallery-section {
+    text-align: center;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.gallery-card {
+    padding: 10px;
+}
+
+.gallery-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.godparents {
     text-align: center;
 }
 
@@ -419,7 +430,7 @@ section {
     padding: 12px 16px;
     border: 1px solid var(--line);
     border-radius: 999px;
-    background: var(--accent-soft);
+    background: var(--paper-strong);
     color: var(--accent-strong);
     font-weight: 800;
 }
@@ -439,10 +450,10 @@ section {
 }
 
 .schedule li {
-    min-height: 164px;
+    min-height: 172px;
     padding: 22px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.66);
     border: 1px solid var(--line);
 }
 
@@ -461,60 +472,6 @@ footer {
     text-align: center;
     color: var(--muted);
 }
-
-.theme-dock {
-    position: fixed;
-    top: 14px;
-    left: 50%;
-    z-index: 10;
-    display: flex;
-    gap: 6px;
-    width: min(calc(100% - 24px), 520px);
-    padding: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.76);
-    box-shadow: 0 12px 32px rgba(40, 32, 26, 0.12);
-    transform: translateX(-50%);
-    backdrop-filter: blur(10px);
-}
-
-.theme-chip {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    min-width: 0;
-    min-height: 36px;
-    padding: 6px 10px;
-    border: 0;
-    border-radius: 999px;
-    background: transparent;
-    color: var(--ink);
-    font: inherit;
-    font-size: 0.82rem;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-.theme-chip.is-active {
-    background: var(--accent-soft);
-    color: var(--accent-strong);
-}
-
-.swatch {
-    width: 14px;
-    height: 14px;
-    flex: 0 0 auto;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.14);
-}
-
-.swatch.blush { background: #b9787e; }
-.swatch.sage { background: #78947d; }
-.swatch.blue { background: #7aa0bd; }
-.swatch.gold { background: #c59a4a; }
 
 .editor-toggle {
     position: fixed;
@@ -572,7 +529,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
     width: 100%;
     border: 1px solid var(--line);
     border-radius: 6px;
@@ -585,10 +543,6 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-}
-
-.editor-actions .button {
-    margin-top: 0;
 }
 
 .editor-note {
@@ -605,6 +559,80 @@ textarea {
 .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.rsvp-shell {
+    min-height: 100svh;
+    padding: 48px 16px 64px;
+}
+
+.rsvp-layout {
+    width: min(1020px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 18px;
+}
+
+.rsvp-card,
+.rsvp-side {
+    padding: clamp(22px, 4vw, 34px);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.76);
+    box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
+}
+
+.rsvp-card form {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.rsvp-card .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.helper-text,
+.status-text,
+.rsvp-side p,
+.rsvp-side li {
+    color: var(--muted);
+}
+
+.status-text {
+    min-height: 24px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.back-link {
+    display: inline-flex;
+    margin-bottom: 18px;
+}
+
+.hidden-field {
+    display: none !important;
+}
+
+@media (max-width: 860px) {
+    .gallery-grid,
+    .details-grid,
+    .schedule ol,
+    .rsvp-layout,
+    .rsvp-card .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .schedule li {
+        min-height: 0;
+    }
 }
 
 @media (max-width: 760px) {
@@ -628,25 +656,6 @@ textarea {
     .hero {
         min-height: 92svh;
         padding-top: 92px;
-    }
-
-    .theme-dock {
-        overflow-x: auto;
-        justify-content: flex-start;
-    }
-
-    .theme-chip {
-        flex: 0 0 auto;
-        min-width: 88px;
-    }
-
-    .details-grid,
-    .schedule ol {
-        grid-template-columns: 1fr;
-    }
-
-    .schedule li {
-        min-height: 0;
     }
 }
 
