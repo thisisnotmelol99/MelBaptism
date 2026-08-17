@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godparent Invitation | Melinoe Zyla Edria Almase Baptism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="invitation-opened" data-theme="gold">
+    <main class="rsvp-shell">
+        <div class="rsvp-layout">
+            <section class="rsvp-card">
+                <a class="back-link" href="index.html">Back to invitation</a>
+                <p class="eyebrow">Godparent Invitation</p>
+                <h1>A special request for <span data-invitee-name>You</span></h1>
+                <p class="helper-text">With love and gratitude, Mark Aris Almase and Jovel Edria Almase would be honored to have you stand as a godparent for Melinoe Zyla Edria Almase.</p>
+                <div class="invite-badge">
+                    Invited godparent:
+                    <strong data-invitee-name-badge>Your name here</strong>
+                </div>
+                <div class="note-panel">
+                    <p>Please confirm through the form below. Once confirmed, your name can be included in the published godparents list on the invitation page.</p>
+                </div>
+
+                <form data-godparent-form novalidate>
+                    <div class="form-grid">
+                        <label>
+                            Full name
+                            <input name="fullName" type="text" required>
+                        </label>
+                        <label>
+                            Contact details
+                            <input name="contactInfo" type="text" placeholder="Messenger name, mobile number, or email" required>
+                        </label>
+                        <label>
+                            Your response
+                            <select name="attendance" required>
+                                <option value="">Select one</option>
+                                <option value="Confirmed">I am honored to accept</option>
+                                <option value="Unable to accept">I am unable to accept</option>
+                            </select>
+                        </label>
+                        <label>
+                            Role
+                            <select name="role" required>
+                                <option value="">Select one</option>
+                                <option value="Ninang">Ninang</option>
+                                <option value="Ninong">Ninong</option>
+                                <option value="Godparent">Godparent</option>
+                            </select>
+                        </label>
+                        <label class="full-width">
+                            Message for the family
+                            <textarea name="message" rows="4" placeholder="Optional"></textarea>
+                        </label>
+                    </div>
+
+                    <button class="button" type="submit">Confirm Invitation</button>
+                    <p class="status-text" data-status-text></p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="godparent.js"></script>
+</body>
+</html>
