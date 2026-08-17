@@ -20,8 +20,10 @@ const defaults = {
 const storageKey = "baptismInvitationTemplate";
 const storageVersion = 2;
 const openedKey = "baptismInvitationOpened";
+const GODPARENT_ENDPOINT = "https://script.google.com/macros/s/AKfycbztuMC_kk9kF6PDIg8BWIYCsnOAgZbw7cm1dm3e25wcsWpRFlqJPFWHQBw-Wy0rr6-LVQ/exec?type=godparents";
 const params = new URLSearchParams(window.location.search);
 const canEdit = params.get("edit") === "1";
+let confirmedGodparents = [];
 
 function loadState() {
     try {
@@ -43,6 +45,52 @@ function saveState(state) {
 }
 
 let state = loadState();
+
+function renderGodparents() {
+    const godparentList = document.querySelector("[data-list='godparents']");
+    if (!godparentList) {
+        return;
+    }
+
+    const names = confirmedGodparents.length > 0
+        ? confirmedGodparents
+        : state.godparents
+            .split("\n")
+            .map((name) => name.trim())
+            .filter(Boolean);
+
+    godparentList.innerHTML = "";
+    names.forEach((name) => {
+        const item = document.createElement("span");
+        item.textContent = name;
+        godparentList.appendChild(item);
+    });
+}
+
+async function fetchConfirmedGodparents() {
+    try {
+        const response = await fetch(GODPARENT_ENDPOINT, {
+            method: "GET",
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            return;
+        }
+
+        const payload = await response.json();
+        if (!payload || !Array.isArray(payload.godparents)) {
+            return;
+        }
+
+        confirmedGodparents = payload.godparents
+            .map((entry) => String(entry || "").trim())
+            .filter(Boolean);
+        renderGodparents();
+    } catch {
+        // Keep the locally configured list when the endpoint is unavailable.
+    }
+}
 
 function openInvitation(skipAnimation = false) {
     const openingScreen = document.querySelector("[data-opening-screen]");
@@ -109,19 +157,7 @@ function render() {
         giftGrid.classList.toggle("is-hidden", visibleGiftCards === 0);
     }
 
-    const godparentList = document.querySelector("[data-list='godparents']");
-    if (godparentList) {
-        godparentList.innerHTML = "";
-        state.godparents
-            .split("\n")
-            .map((name) => name.trim())
-            .filter(Boolean)
-            .forEach((name) => {
-                const item = document.createElement("span");
-                item.textContent = name;
-                godparentList.appendChild(item);
-            });
-    }
+    renderGodparents();
 
     document.querySelectorAll("[data-field]").forEach((field) => {
         field.value = state[field.dataset.field] || "";
@@ -218,3 +254,4 @@ bindOpeningScreen();
 bindEditor();
 render();
 revealSections();
+fetchConfirmedGodparents();
