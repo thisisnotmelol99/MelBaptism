@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godparent Confirmation | Melinoe Zyla Edria Almase Baptism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="invitation-opened" data-theme="gold">
+    <main class="confirmation-shell">
+        <section class="confirmation-card">
+            <p class="eyebrow">Confirmation Received</p>
+            <h1 data-confirmation-heading>Thank you for your response</h1>
+            <p data-confirmation-copy>Your response has been sent to the family. If you accepted the invitation, your name can now be included in the godparents list shown on the invitation page.</p>
+            <div class="confirmation-actions">
+                <a class="button" href="index.html">Back to invitation</a>
+                <a class="button secondary-button" href="godparent.html">Open godparent page</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = String(params.get("name") || "").trim();
+        const status = String(params.get("status") || "").trim();
+        const heading = document.querySelector("[data-confirmation-heading]");
+        const copy = document.querySelector("[data-confirmation-copy]");
+
+        if (status === "Confirmed") {
+            heading.textContent = name ? `Thank you, ${name}` : "Thank you for accepting";
+            copy.textContent = "Your confirmation has been sent to the family. Your name can now be included in the godparents list once the published invitation refreshes from the sheet.";
+        } else if (status === "Unable to accept") {
+            heading.textContent = name ? `Thank you for letting us know, ${name}` : "Thank you for your response";
+            copy.textContent = "Your response has been sent to the family. For any follow-up, Aris or Jovel can be reached in Messenger.";
+        }
+    </script>
+</body>
+</html>
