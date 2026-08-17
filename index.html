@@ -85,6 +85,14 @@
             <textarea data-field="contactNote" rows="3"></textarea>
         </label>
         <label>
+            Blessing note
+            <textarea data-field="blessingNote" rows="3"></textarea>
+        </label>
+        <label>
+            Gift note
+            <textarea data-field="giftNote" rows="3"></textarea>
+        </label>
+        <label>
             Godparents
             <textarea data-field="godparents" rows="4" placeholder="One name per line"></textarea>
         </label>
@@ -95,6 +103,14 @@
         <label>
             RSVP page link
             <input data-field="rsvpLink" type="text">
+        </label>
+        <label>
+            Gift QR image 1
+            <input data-field="giftQrOne" type="text" placeholder="images/your-qr-1.jfif">
+        </label>
+        <label>
+            Gift QR image 2
+            <input data-field="giftQrTwo" type="text" placeholder="images/your-qr-2.jfif">
         </label>
         <div class="editor-actions">
             <button class="button secondary" type="button" data-reset>Reset</button>
@@ -162,6 +178,40 @@
             <p class="eyebrow">Church Attire</p>
             <h2>Dress Code</h2>
             <p data-text="attireNote">We would love for everyone to come in neat church attire with a graceful, celebratory feel. Soft neutrals, warm beige, champagne, cream, and gentle earth tones are warmly encouraged, while very casual wear and loud prints are best avoided.</p>
+            <div class="palette-grid" aria-label="Color palette reference">
+                <article class="palette-card">
+                    <span class="palette-swatch cream"></span>
+                    <strong>Ivory Cream</strong>
+                    <span>Light, soft, and classic for church.</span>
+                </article>
+                <article class="palette-card">
+                    <span class="palette-swatch champagne"></span>
+                    <strong>Champagne</strong>
+                    <span>A gentle golden neutral with a dressed-up feel.</span>
+                </article>
+                <article class="palette-card">
+                    <span class="palette-swatch beige"></span>
+                    <strong>Warm Beige</strong>
+                    <span>Refined and easy to coordinate for families and guests.</span>
+                </article>
+                <article class="palette-card">
+                    <span class="palette-swatch taupe"></span>
+                    <strong>Soft Taupe</strong>
+                    <span>A calm earth tone that still feels polished.</span>
+                </article>
+            </div>
+            <div class="attire-guidance">
+                <article>
+                    <p class="eyebrow">For ladies</p>
+                    <h3>Elegant and modest</h3>
+                    <p>Midi dresses, soft coordinates, and graceful silhouettes in the suggested palette are warmly encouraged.</p>
+                </article>
+                <article>
+                    <p class="eyebrow">For gentlemen</p>
+                    <h3>Neat and refined</h3>
+                    <p>Button-downs, polos, dress slacks, and smart casual pieces in light neutrals or muted earth shades are ideal.</p>
+                </article>
+            </div>
         </section>
 
         <section class="godparents">
@@ -189,6 +239,21 @@
             <p data-text="contactNote">Please RSVP through the form. For any questions or clarifications, message Aris or Jovel in Messenger.</p>
             <div class="hero-actions center-actions">
                 <a class="button secondary-button" data-link="rsvpLink" href="rsvp.html">Go to RSVP form</a>
+            </div>
+        </section>
+
+        <section class="gift-section">
+            <p class="eyebrow">Blessings</p>
+            <h2>Send a Prayer or Gift</h2>
+            <p data-text="blessingNote">Your presence and prayers are more than enough. If you would also like to bless Melinoe with a monetary gift, you may use the QR codes below.</p>
+            <p data-text="giftNote">Thank you for celebrating this meaningful day with our family. We will clear the RSVP list after the event.</p>
+            <div class="gift-grid" data-gift-grid>
+                <figure class="gift-card is-hidden" data-gift-card="one">
+                    <img data-gift-image="one" alt="Gift QR code one">
+                </figure>
+                <figure class="gift-card is-hidden" data-gift-card="two">
+                    <img data-gift-image="two" alt="Gift QR code two">
+                </figure>
             </div>
         </section>
     </main>
