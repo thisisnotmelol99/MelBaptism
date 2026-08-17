@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP | Melinoe Zyla Edria Almase Baptism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="invitation-opened" data-theme="gold">
+    <main class="rsvp-shell">
+        <div class="rsvp-layout">
+            <section class="rsvp-card">
+                <a class="back-link" href="index.html">Back to invitation</a>
+                <p class="eyebrow">RSVP</p>
+                <h1>Celebrate with Melinoe</h1>
+                <p class="helper-text">Please let us know if you can join the baptism celebration. For questions or clarifications, message Aris or Jovel in Messenger.</p>
+
+                <form data-rsvp-form novalidate>
+                    <div class="form-grid">
+                        <label>
+                            Full name
+                            <input name="fullName" type="text" required>
+                        </label>
+                        <label>
+                            Contact details
+                            <input name="contactInfo" type="text" placeholder="Messenger name, mobile number, or email" required>
+                        </label>
+                        <label>
+                            Will you attend?
+                            <select name="attendance" required>
+                                <option value="">Select one</option>
+                                <option value="Attending">Attending</option>
+                                <option value="Unable to attend">Unable to attend</option>
+                            </select>
+                        </label>
+                        <label>
+                            Coming with someone else?
+                            <select name="bringingGuests" data-guest-toggle required>
+                                <option value="">Select one</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </label>
+                        <label class="hidden-field" data-guest-field>
+                            Number of additional guests
+                            <input name="guestCount" type="number" min="1" max="10" value="1">
+                        </label>
+                        <label class="full-width hidden-field" data-guest-field>
+                            Guest names
+                            <textarea name="guestNames" rows="3" placeholder="List the names of the people coming with you"></textarea>
+                        </label>
+                        <label class="full-width">
+                            Message for the family
+                            <textarea name="message" rows="4" placeholder="Optional"></textarea>
+                        </label>
+                    </div>
+
+                    <button class="button" type="submit">Submit RSVP</button>
+                    <p class="status-text" data-status-text></p>
+                </form>
+            </section>
+
+            <aside class="rsvp-side">
+                <p class="eyebrow">Guest list</p>
+                <h2>How responses are stored</h2>
+                <p>This form is ready to connect to a sheet-backed RSVP endpoint. Once connected, you will be able to see the raw list of names and the running count in one place.</p>
+                <ul>
+                    <li>Each submission records the guest's identity and attendance status.</li>
+                    <li>If they are coming with others, the form includes their extra guest count and names.</li>
+                    <li>The easiest setup for GitHub Pages is a Google Sheet or another hosted table endpoint.</li>
+                </ul>
+                <p class="helper-text">The page is already prepared for that connection through <code>rsvp.js</code>.</p>
+            </aside>
+        </div>
+    </main>
+
+    <script src="rsvp.js"></script>
+</body>
+</html>
