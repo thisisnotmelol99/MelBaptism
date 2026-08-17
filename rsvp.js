@@ -112,7 +112,7 @@ function bindForm() {
         }
 
         if (!RSVP_ENDPOINT) {
-            statusText.innerHTML = `The RSVP form is ready, but the submission endpoint is not connected yet. Responses are meant to go to your Google Sheet: <a href="${RSVP_SHEET_URL}" target="_blank" rel="noreferrer">open sheet</a>. Add the Apps Script or form endpoint in rsvp.js to start saving submissions there.`;
+            statusText.innerHTML = `The RSVP form is not ready right now. Please message Aris or Jovel in Messenger, or check the response sheet here: <a href="${RSVP_SHEET_URL}" target="_blank" rel="noreferrer">open sheet</a>.`;
             return;
         }
 
@@ -126,10 +126,7 @@ function bindForm() {
 
         try {
             await submitRsvp(payload);
-            form.reset();
-            updateGuestFields();
-            statusText.textContent = "Thank you. Your RSVP has been submitted.";
-            await refreshCapacity();
+            window.location.href = "confirmation.html";
         } catch {
             statusText.textContent = "Something went wrong while sending the RSVP. Please try again or message Aris or Jovel in Messenger.";
         }
