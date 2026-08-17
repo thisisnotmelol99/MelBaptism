@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baptism Invitation</title>
+    <title>Melinoe Zyla Edria Almase Baptism Invitation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="blush">
+<body data-theme="gold">
     <div class="opening-screen" data-opening-screen>
         <div class="floating-petals" aria-hidden="true">
             <span></span>
@@ -24,42 +24,23 @@
                 <div class="envelope-back"></div>
                 <div class="invitation-card">
                     <p class="eyebrow">Holy Baptism</p>
-                    <h2 data-text="childName">Angelie De Leon</h2>
-                    <p data-text="date">Sunday, December 22, 2024</p>
+                    <h2 data-text="childName">Melinoe Zyla Edria Almase</h2>
+                    <p data-text="date">Date to be announced</p>
                 </div>
                 <div class="envelope-left"></div>
                 <div class="envelope-right"></div>
                 <div class="envelope-bottom"></div>
                 <div class="envelope-flap"></div>
-                <div class="wax-seal">+</div>
+                <div class="wax-seal">M</div>
             </div>
             <div class="opening-copy">
                 <p class="script">A blessed invitation</p>
-                <h1 data-text="childName">Angelie De Leon</h1>
-                <p>You are warmly invited to celebrate this sacred day with our family.</p>
+                <h1 data-text="childName">Melinoe Zyla Edria Almase</h1>
+                <p>Please join us as we celebrate the baptism of our beloved baby girl.</p>
                 <button class="button open-button" type="button" data-open-invitation>Open Invitation</button>
             </div>
         </div>
     </div>
-
-    <aside class="theme-dock" aria-label="Theme selector">
-        <button class="theme-chip is-active" type="button" data-theme-choice="blush" title="Blush Garden">
-            <span class="swatch blush"></span>
-            <span>Blush</span>
-        </button>
-        <button class="theme-chip" type="button" data-theme-choice="sage" title="Sage Chapel">
-            <span class="swatch sage"></span>
-            <span>Sage</span>
-        </button>
-        <button class="theme-chip" type="button" data-theme-choice="blue" title="Sky Grace">
-            <span class="swatch blue"></span>
-            <span>Blue</span>
-        </button>
-        <button class="theme-chip" type="button" data-theme-choice="gold" title="Classic Gold">
-            <span class="swatch gold"></span>
-            <span>Gold</span>
-        </button>
-    </aside>
 
     <button class="editor-toggle" type="button" data-editor-open hidden>Edit</button>
 
@@ -72,7 +53,7 @@
             <button class="icon-button" type="button" data-editor-close aria-label="Close editor">x</button>
         </div>
         <label>
-            Child's name
+            Baby's name
             <input data-field="childName" type="text">
         </label>
         <label>
@@ -92,74 +73,102 @@
             <input data-field="church" type="text">
         </label>
         <label>
-            Reception
-            <input data-field="reception" type="text">
-        </label>
-        <label>
             RSVP note
             <textarea data-field="rsvp" rows="3"></textarea>
+        </label>
+        <label>
+            Church attire note
+            <textarea data-field="attireNote" rows="3"></textarea>
+        </label>
+        <label>
+            Contact note
+            <textarea data-field="contactNote" rows="3"></textarea>
         </label>
         <label>
             Godparents
             <textarea data-field="godparents" rows="4" placeholder="One name per line"></textarea>
         </label>
         <label>
-            Ceremony directions link
+            Directions link
             <input data-field="ceremonyLink" type="url">
         </label>
         <label>
-            Reception directions link
-            <input data-field="receptionLink" type="url">
+            RSVP page link
+            <input data-field="rsvpLink" type="text">
         </label>
         <div class="editor-actions">
             <button class="button secondary" type="button" data-reset>Reset</button>
             <button class="button" type="button" data-copy-config>Copy Saved Data</button>
         </div>
-        <p class="editor-note">Open this page with <strong>?edit=1</strong> to show the editor. Guests using the normal link only see the invitation.</p>
+        <p class="editor-note">Open this page with <strong>?edit=1</strong> to update the invitation text. The public page stays view-only for your guests.</p>
     </aside>
 
     <header class="hero">
         <div class="hero-overlay">
             <p class="script">You are invited to the baptism of</p>
-            <h1 data-text="childName">Angelie De Leon</h1>
-            <p class="parents">With joyful hearts, <span data-text="parents">Haison and Melody De Leon</span> invite you to celebrate this blessed day.</p>
+            <h1 data-text="childName">Melinoe Zyla Edria Almase</h1>
+            <p class="parents">With joyful hearts, <span data-text="parents">Mark Aris Almase and Jovel Edria Almase</span> invite you to celebrate this sacred day.</p>
             <div class="event-strip" aria-label="Event summary">
-                <span data-text="date">Sunday, December 22, 2024</span>
-                <span data-text="time">10:00 AM</span>
-                <span data-text="church">St. Therese of the Child Jesus Parish, Los Banos</span>
+                <span data-text="date">Date to be announced</span>
+                <span data-text="time">Time to be announced</span>
+                <span data-text="church">Sto. Nino Parish de Cebu</span>
             </div>
-            <a class="button" data-link="ceremonyLink" href="https://www.google.com/maps/dir/?api=1&destination=St.+Therese+of+the+Child+Jesus+Parish,+Los+Banos,+Laguna" target="_blank" rel="noreferrer">Get Directions</a>
+            <div class="hero-actions">
+                <a class="button" data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu" target="_blank" rel="noreferrer">Get Directions</a>
+                <a class="button secondary-button" data-link="rsvpLink" href="rsvp.html">RSVP</a>
+            </div>
         </div>
     </header>
 
     <main>
         <section class="intro-band">
             <p class="eyebrow">Holy Baptism</p>
-            <h2>A sacred beginning, shared with family and friends</h2>
-            <p>We would be honored by your presence as our child receives the sacrament of Holy Baptism. Your prayers, love, and company will make this day even more meaningful.</p>
+            <h2>A celebration of faith, family, and a new beginning</h2>
+            <p>We would be honored by your presence as our little one receives the sacrament of Holy Baptism. Your prayers, love, and company will make this day even more meaningful for our family.</p>
         </section>
 
         <section class="details-grid" aria-label="Event details">
             <article>
                 <p class="eyebrow">Ceremony</p>
-                <h2 data-text="church">St. Therese of the Child Jesus Parish, Los Banos</h2>
-                <p><span data-text="date">Sunday, December 22, 2024</span> at <span data-text="time">10:00 AM</span></p>
-                <a data-link="ceremonyLink" href="https://www.google.com/maps/dir/?api=1&destination=St.+Therese+of+the+Child+Jesus+Parish,+Los+Banos,+Laguna" target="_blank" rel="noreferrer">View ceremony map</a>
+                <h2 data-text="church">Sto. Nino Parish de Cebu</h2>
+                <p><span data-text="date">Date to be announced</span> at <span data-text="time">Time to be announced</span></p>
+                <a data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu" target="_blank" rel="noreferrer">View church map</a>
             </article>
             <article>
-                <p class="eyebrow">Reception</p>
-                <h2 data-text="reception">The Grove, Los Banos</h2>
-                <p>A joyful gathering will follow after the ceremony.</p>
-                <a data-link="receptionLink" href="https://www.google.com/maps/dir/?api=1&destination=The+Grove+Los+Banos,+Laguna" target="_blank" rel="noreferrer">View reception map</a>
+                <p class="eyebrow">RSVP</p>
+                <h2>Please let us know if you can make it</h2>
+                <p data-text="rsvp">Please RSVP using the form so we can keep an accurate guest list and headcount.</p>
+                <a data-link="rsvpLink" href="rsvp.html">Open RSVP form</a>
             </article>
+        </section>
+
+        <section class="gallery-section">
+            <p class="eyebrow">Our little blessing</p>
+            <h2>Melinoe's Gallery</h2>
+            <div class="gallery-grid">
+                <figure class="gallery-card">
+                    <img src="images/Mel-1.jpg" alt="Melinoe portrait one">
+                </figure>
+                <figure class="gallery-card">
+                    <img src="images/Mel-2.jpg" alt="Melinoe portrait two">
+                </figure>
+                <figure class="gallery-card">
+                    <img src="images/Mel-3.jpg" alt="Melinoe portrait three">
+                </figure>
+            </div>
+        </section>
+
+        <section class="attire-section">
+            <p class="eyebrow">Church Attire</p>
+            <h2>Dress Code</h2>
+            <p data-text="attireNote">We would love for everyone to come in neat church attire with a graceful, celebratory feel. Soft neutrals, warm beige, champagne, cream, and gentle earth tones are warmly encouraged, while very casual wear and loud prints are best avoided.</p>
         </section>
 
         <section class="godparents">
             <p class="eyebrow">With gratitude</p>
             <h2>Godparents</h2>
             <div class="name-list" data-list="godparents">
-                <span>Ninong H</span>
-                <span>Ninang M</span>
+                <span>To be announced</span>
             </div>
         </section>
 
@@ -167,22 +176,25 @@
             <p class="eyebrow">Order of the day</p>
             <h2>Celebration Flow</h2>
             <ol>
-                <li><strong>Arrival</strong><span>Please arrive 15 minutes before the ceremony.</span></li>
-                <li><strong>Baptism Ceremony</strong><span>Family blessing and sacrament.</span></li>
-                <li><strong>Photos</strong><span>A few family portraits after the ceremony.</span></li>
-                <li><strong>Reception</strong><span>Lunch, thanksgiving, and simple celebration.</span></li>
+                <li><strong>Arrival</strong><span>Please arrive a little early so everyone can be seated before the ceremony begins.</span></li>
+                <li><strong>Baptism Ceremony</strong><span>A sacred family moment as Melinoe receives the sacrament of Holy Baptism.</span></li>
+                <li><strong>Photos</strong><span>We will take a few family and guest photos after the ceremony.</span></li>
+                <li><strong>Gathering</strong><span>More details can be shared directly by Aris or Jovel once plans are finalized.</span></li>
             </ol>
         </section>
 
         <section class="rsvp">
-            <p class="eyebrow">RSVP</p>
-            <h2>We hope you can join us</h2>
-            <p data-text="rsvp">Kindly confirm your attendance by December 15, 2024. You may contact Haison or Melody directly.</p>
+            <p class="eyebrow">Questions</p>
+            <h2>We would love to hear from you</h2>
+            <p data-text="contactNote">Please RSVP through the form. For any questions or clarifications, message Aris or Jovel in Messenger.</p>
+            <div class="hero-actions center-actions">
+                <a class="button secondary-button" data-link="rsvpLink" href="rsvp.html">Go to RSVP form</a>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>Made with love for <span data-text="childName">Angelie De Leon</span>'s baptism.</p>
+        <p>Made with love for <span data-text="childName">Melinoe Zyla Edria Almase</span>'s baptism.</p>
     </footer>
 
     <script src="script.js"></script>
