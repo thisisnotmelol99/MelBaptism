@@ -43,6 +43,10 @@ body[data-theme="gold"] {
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -53,6 +57,10 @@ body {
     background: var(--paper);
     font-family: "Inter", Arial, sans-serif;
     line-height: 1.6;
+}
+
+body:not(.invitation-opened) {
+    overflow: hidden;
 }
 
 body::before {
@@ -70,6 +78,190 @@ a {
     color: var(--accent-strong);
     font-weight: 700;
     text-decoration: none;
+}
+
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: grid;
+    place-items: center;
+    padding: 28px;
+    background-image: linear-gradient(rgba(255, 250, 243, 0.5), rgba(255, 250, 243, 0.86)), url("images/baptism-watercolor-hero.png");
+    background-position: center;
+    background-size: cover;
+    transition: opacity 700ms ease, visibility 700ms ease;
+}
+
+.opening-screen.is-open {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.envelope-stage {
+    display: grid;
+    grid-template-columns: minmax(280px, 420px) minmax(280px, 520px);
+    align-items: center;
+    gap: clamp(28px, 6vw, 72px);
+    width: min(980px, 100%);
+}
+
+.envelope {
+    position: relative;
+    width: min(420px, 86vw);
+    aspect-ratio: 1.28;
+    margin: auto;
+    filter: drop-shadow(0 24px 42px rgba(64, 44, 35, 0.22));
+    perspective: 1000px;
+}
+
+.envelope-back,
+.envelope-left,
+.envelope-right,
+.envelope-bottom,
+.envelope-flap {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+}
+
+.envelope-back {
+    background: linear-gradient(145deg, #fff7ee, var(--accent-soft));
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.invitation-card {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    bottom: 16%;
+    z-index: 2;
+    min-height: 74%;
+    padding: 30px 22px 20px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.92);
+    transform: translateY(38%);
+    transition: transform 950ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.invitation-card h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.invitation-card p:last-child {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.envelope-left {
+    z-index: 3;
+    clip-path: polygon(0 0, 52% 50%, 0 100%);
+    background: linear-gradient(125deg, #fff2e5, var(--accent-soft));
+}
+
+.envelope-right {
+    z-index: 3;
+    clip-path: polygon(100% 0, 48% 50%, 100% 100%);
+    background: linear-gradient(235deg, #fff7ef, var(--accent-soft));
+}
+
+.envelope-bottom {
+    z-index: 4;
+    clip-path: polygon(0 100%, 50% 42%, 100% 100%);
+    background: linear-gradient(0deg, #fff5ea, var(--accent-soft));
+}
+
+.envelope-flap {
+    z-index: 5;
+    clip-path: polygon(0 0, 50% 58%, 100% 0);
+    background: linear-gradient(180deg, #fff9f2, var(--accent-soft));
+    transform-origin: top center;
+    transition: transform 800ms cubic-bezier(.2, .8, .2, 1), z-index 800ms step-end;
+}
+
+.wax-seal {
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    z-index: 6;
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: var(--accent-strong);
+    color: #fff;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 2rem;
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 8px 22px rgba(70, 45, 36, 0.22);
+    transition: opacity 400ms ease, transform 500ms ease;
+}
+
+.opening-copy {
+    text-align: center;
+}
+
+.opening-copy h1 {
+    font-size: clamp(3rem, 9vw, 6.5rem);
+}
+
+.opening-copy p:not(.script) {
+    width: min(460px, 100%);
+    margin: 18px auto 0;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.opening-screen.is-opening .envelope-flap {
+    z-index: 1;
+    transform: rotateX(178deg);
+}
+
+.opening-screen.is-opening .invitation-card {
+    transform: translateY(-18%);
+}
+
+.opening-screen.is-opening .wax-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
+}
+
+.floating-petals span {
+    position: absolute;
+    top: -8%;
+    width: 14px;
+    height: 22px;
+    border-radius: 80% 0 80% 0;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 0 0 1px rgba(185, 120, 126, 0.12);
+    animation: petal-fall 9s linear infinite;
+}
+
+.floating-petals span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.floating-petals span:nth-child(2) { left: 24%; animation-delay: 2s; }
+.floating-petals span:nth-child(3) { left: 46%; animation-delay: 1s; }
+.floating-petals span:nth-child(4) { left: 64%; animation-delay: 3s; }
+.floating-petals span:nth-child(5) { left: 78%; animation-delay: 1.6s; }
+.floating-petals span:nth-child(6) { left: 90%; animation-delay: 4s; }
+
+@keyframes petal-fall {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translate3d(-42px, 112vh, 0) rotate(280deg);
+        opacity: 0;
+    }
 }
 
 .hero {
@@ -416,6 +608,23 @@ textarea {
 }
 
 @media (max-width: 760px) {
+    .opening-screen {
+        padding: 20px;
+    }
+
+    .envelope-stage {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .envelope {
+        width: min(340px, 88vw);
+    }
+
+    .opening-copy {
+        align-self: start;
+    }
+
     .hero {
         min-height: 92svh;
         padding-top: 92px;
@@ -438,5 +647,16 @@ textarea {
 
     .schedule li {
         min-height: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
