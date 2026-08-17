@@ -272,7 +272,8 @@ a {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
     letter-spacing: 0;
@@ -349,15 +350,22 @@ section {
 }
 
 .intro-band,
-.rsvp {
-    max-width: 780px;
+.rsvp,
+.attire-section,
+.gift-section {
     text-align: center;
 }
 
+.intro-band,
+.rsvp {
+    max-width: 780px;
+}
+
 .intro-band p:last-child,
-.rsvp p:last-child {
-    margin: 18px auto 0;
-    max-width: 670px;
+.rsvp p:last-child,
+.attire-section p,
+.gift-section p {
+    margin-top: 18px;
     color: var(--muted);
     font-size: 1.05rem;
 }
@@ -378,11 +386,14 @@ section {
 }
 
 .details-grid article,
-.gallery-card {
-    padding: clamp(22px, 4vw, 38px);
+.gallery-card,
+.palette-card,
+.gift-card,
+.attire-guidance article {
+    padding: clamp(18px, 4vw, 28px);
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.72);
     box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
 }
 
@@ -411,6 +422,52 @@ section {
     aspect-ratio: 3 / 4;
     object-fit: cover;
     border-radius: 6px;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.palette-card strong,
+.palette-card span,
+.gift-card img,
+.attire-guidance h3 {
+    display: block;
+}
+
+.palette-card strong,
+.attire-guidance h3 {
+    font-size: 1.5rem;
+    color: var(--accent-strong);
+}
+
+.palette-card span:last-child,
+.attire-guidance p:last-child {
+    color: var(--muted);
+}
+
+.palette-swatch {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.42);
+}
+
+.palette-swatch.cream { background: #f4efe3; }
+.palette-swatch.champagne { background: #e3cfaa; }
+.palette-swatch.beige { background: #d4b997; }
+.palette-swatch.taupe { background: #b9a28d; }
+
+.attire-guidance {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 24px;
 }
 
 .godparents {
@@ -465,6 +522,30 @@ section {
 .schedule strong {
     margin-bottom: 10px;
     color: var(--accent-strong);
+}
+
+.gift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.gift-card {
+    padding: 14px;
+}
+
+.gift-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.gift-card.is-hidden,
+.gift-grid.is-hidden {
+    display: none;
 }
 
 footer {
@@ -570,7 +651,7 @@ select {
     width: min(1020px, 100%);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
 }
 
@@ -581,6 +662,12 @@ select {
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.76);
     box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
+}
+
+.rsvp-card {
+    max-width: 760px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .rsvp-card form {
@@ -623,10 +710,13 @@ select {
 
 @media (max-width: 860px) {
     .gallery-grid,
+    .palette-grid,
     .details-grid,
     .schedule ol,
     .rsvp-layout,
-    .rsvp-card .form-grid {
+    .rsvp-card .form-grid,
+    .attire-guidance,
+    .gift-grid {
         grid-template-columns: 1fr;
     }
 
