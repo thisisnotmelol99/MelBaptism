@@ -1,15 +1,16 @@
 const defaults = {
-    childName: "Angelie De Leon",
-    parents: "Haison and Melody De Leon",
-    date: "Sunday, December 22, 2024",
-    time: "10:00 AM",
-    church: "St. Therese of the Child Jesus Parish, Los Banos",
-    reception: "The Grove, Los Banos",
-    rsvp: "Kindly confirm your attendance by December 15, 2024. You may contact Haison or Melody directly.",
-    godparents: "Ninong H\nNinang M",
-    ceremonyLink: "https://www.google.com/maps/dir/?api=1&destination=St.+Therese+of+the+Child+Jesus+Parish,+Los+Banos,+Laguna",
-    receptionLink: "https://www.google.com/maps/dir/?api=1&destination=The+Grove+Los+Banos,+Laguna",
-    theme: "blush"
+    childName: "Melinoe Zyla Edria Almase",
+    parents: "Mark Aris Almase and Jovel Edria Almase",
+    date: "Date to be announced",
+    time: "Time to be announced",
+    church: "Sto. Nino Parish de Cebu",
+    rsvp: "Please RSVP using the form so we can keep an accurate guest list and headcount.",
+    attireNote: "We would love for everyone to come in neat church attire with a graceful, celebratory feel. Soft neutrals, warm beige, champagne, cream, and gentle earth tones are warmly encouraged, while very casual wear and loud prints are best avoided.",
+    contactNote: "Please RSVP through the form. For any questions or clarifications, message Aris or Jovel in Messenger.",
+    godparents: "To be announced",
+    ceremonyLink: "https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu",
+    rsvpLink: "rsvp.html",
+    theme: "gold"
 };
 
 const storageKey = "baptismInvitationTemplate";
@@ -56,7 +57,7 @@ function openInvitation(skipAnimation = false) {
 }
 
 function render() {
-    document.body.dataset.theme = state.theme;
+    document.body.dataset.theme = defaults.theme;
     document.title = `${state.childName} Baptism Invitation`;
 
     document.querySelectorAll("[data-text]").forEach((element) => {
@@ -68,33 +69,21 @@ function render() {
     });
 
     const godparentList = document.querySelector("[data-list='godparents']");
-    godparentList.innerHTML = "";
-    state.godparents
-        .split("\n")
-        .map((name) => name.trim())
-        .filter(Boolean)
-        .forEach((name) => {
-            const item = document.createElement("span");
-            item.textContent = name;
-            godparentList.appendChild(item);
-        });
-
-    document.querySelectorAll("[data-theme-choice]").forEach((button) => {
-        button.classList.toggle("is-active", button.dataset.themeChoice === state.theme);
-    });
+    if (godparentList) {
+        godparentList.innerHTML = "";
+        state.godparents
+            .split("\n")
+            .map((name) => name.trim())
+            .filter(Boolean)
+            .forEach((name) => {
+                const item = document.createElement("span");
+                item.textContent = name;
+                godparentList.appendChild(item);
+            });
+    }
 
     document.querySelectorAll("[data-field]").forEach((field) => {
         field.value = state[field.dataset.field] || "";
-    });
-}
-
-function bindThemeControls() {
-    document.querySelectorAll("[data-theme-choice]").forEach((button) => {
-        button.addEventListener("click", () => {
-            state.theme = button.dataset.themeChoice;
-            saveState(state);
-            render();
-        });
     });
 }
 
@@ -103,7 +92,7 @@ function bindEditor() {
     const closeButton = document.querySelector("[data-editor-close]");
     const panel = document.querySelector("[data-editor-panel]");
 
-    if (!canEdit) {
+    if (!canEdit || !openButton || !closeButton || !panel) {
         return;
     }
 
@@ -114,6 +103,7 @@ function bindEditor() {
     openButton.addEventListener("click", () => {
         panel.hidden = false;
     });
+
     closeButton.addEventListener("click", () => {
         panel.hidden = true;
     });
@@ -145,6 +135,10 @@ function bindEditor() {
 
 function bindOpeningScreen() {
     const openButton = document.querySelector("[data-open-invitation]");
+
+    if (!openButton) {
+        return;
+    }
 
     if (canEdit || sessionStorage.getItem(openedKey) === "1") {
         openInvitation(true);
@@ -179,7 +173,6 @@ function revealSections() {
     });
 }
 
-bindThemeControls();
 bindOpeningScreen();
 bindEditor();
 render();
