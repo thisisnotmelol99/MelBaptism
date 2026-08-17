@@ -14,20 +14,28 @@ const defaults = {
 };
 
 const storageKey = "baptismInvitationTemplate";
+const storageVersion = 2;
 const openedKey = "baptismInvitationOpened";
 const params = new URLSearchParams(window.location.search);
 const canEdit = params.get("edit") === "1";
 
 function loadState() {
     try {
-        return { ...defaults, ...JSON.parse(localStorage.getItem(storageKey)) };
+        const stored = JSON.parse(localStorage.getItem(storageKey));
+        if (!stored || stored.__version !== storageVersion) {
+            return { ...defaults };
+        }
+        return { ...defaults, ...stored };
     } catch {
         return { ...defaults };
     }
 }
 
 function saveState(state) {
-    localStorage.setItem(storageKey, JSON.stringify(state));
+    localStorage.setItem(storageKey, JSON.stringify({
+        ...state,
+        __version: storageVersion
+    }));
 }
 
 let state = loadState();
