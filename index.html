@@ -25,7 +25,7 @@
                 <div class="invitation-card">
                     <p class="eyebrow">Holy Baptism</p>
                     <h2 data-text="childName">Melinoe Zyla Edria Almase</h2>
-                    <p data-text="date">Date to be announced</p>
+                    <p data-text="date">December 12, 2026</p>
                 </div>
                 <div class="envelope-left"></div>
                 <div class="envelope-right"></div>
@@ -73,6 +73,14 @@
             <input data-field="church" type="text">
         </label>
         <label>
+            Reception venue
+            <input data-field="reception" type="text">
+        </label>
+        <label>
+            Reception address
+            <textarea data-field="receptionAddress" rows="3"></textarea>
+        </label>
+        <label>
             RSVP note
             <textarea data-field="rsvp" rows="3"></textarea>
         </label>
@@ -101,6 +109,10 @@
             <input data-field="ceremonyLink" type="url">
         </label>
         <label>
+            Reception map link
+            <input data-field="receptionLink" type="url">
+        </label>
+        <label>
             RSVP page link
             <input data-field="rsvpLink" type="text">
         </label>
@@ -125,8 +137,8 @@
             <h1 data-text="childName">Melinoe Zyla Edria Almase</h1>
             <p class="parents">With joyful hearts, <span data-text="parents">Mark Aris Almase and Jovel Edria Almase</span> invite you to celebrate this sacred day.</p>
             <div class="event-strip" aria-label="Event summary">
-                <span data-text="date">Date to be announced</span>
-                <span data-text="time">Time to be announced</span>
+                <span data-text="date">December 12, 2026</span>
+                <span data-text="time">9:30 AM, please arrive at least 30 minutes before the ceremony.</span>
                 <span data-text="church">Sto. Nino Parish de Cebu</span>
             </div>
             <div class="hero-actions">
@@ -147,8 +159,14 @@
             <article>
                 <p class="eyebrow">Ceremony</p>
                 <h2 data-text="church">Sto. Nino Parish de Cebu</h2>
-                <p><span data-text="date">Date to be announced</span> at <span data-text="time">Time to be announced</span></p>
+                <p><span data-text="date">December 12, 2026</span> at <span data-text="time">9:30 AM, please arrive at least 30 minutes before the ceremony.</span></p>
                 <a data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu" target="_blank" rel="noreferrer">View church map</a>
+            </article>
+            <article>
+                <p class="eyebrow">Reception</p>
+                <h2 data-text="reception">Kenny Rogers Southwoods</h2>
+                <p data-text="receptionAddress">Block 2, Lot 2, Southwoods Ecocentrum Business Park, Ecocentrum Blvd, City of Bi&ntilde;an, Laguna</p>
+                <a data-link="receptionLink" href="https://www.google.com/maps/search/?api=1&query=Kenny+Rogers+Southwoods+Block+2+Lot+2+Southwoods+Ecocentrum+Business+Park+Ecocentrum+Blvd+City+of+Bi%C3%B1an+Laguna" target="_blank" rel="noreferrer">View reception map</a>
             </article>
             <article>
                 <p class="eyebrow">RSVP</p>
@@ -156,6 +174,34 @@
                 <p data-text="rsvp">Please RSVP using the form so we can keep an accurate guest list and headcount.</p>
                 <a data-link="rsvpLink" href="rsvp.html">Open RSVP form</a>
             </article>
+        </section>
+
+        <section class="location-section">
+            <p class="eyebrow">Locations</p>
+            <h2>Ceremony and reception map</h2>
+            <p>Use the maps below to preview both venues and plan your route for the day.</p>
+            <div class="map-grid">
+                <article class="map-card">
+                    <div class="map-frame">
+                        <iframe
+                            title="Sto. Nino Parish de Cebu map"
+                            src="https://www.google.com/maps?q=Sto.+Nino+Parish+de+Cebu&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <strong data-text="church">Sto. Nino Parish de Cebu</strong>
+                </article>
+                <article class="map-card">
+                    <div class="map-frame">
+                        <iframe
+                            title="Kenny Rogers Southwoods map"
+                            src="https://www.google.com/maps?q=Kenny+Rogers+Southwoods+Block+2+Lot+2+Southwoods+Ecocentrum+Business+Park+Ecocentrum+Blvd+City+of+Bi%C3%B1an+Laguna&output=embed"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <strong data-text="reception">Kenny Rogers Southwoods</strong>
+                </article>
+            </div>
         </section>
 
         <section class="gallery-section">
@@ -246,7 +292,7 @@
             <p class="eyebrow">Blessings</p>
             <h2>Send a Prayer or Gift</h2>
             <p data-text="blessingNote">Your presence and prayers are more than enough. If you would also like to bless Melinoe with a monetary gift, you may use the QR codes below.</p>
-            <p data-text="giftNote">Thank you for celebrating this meaningful day with our family. We will clear the RSVP list after the event.</p>
+            <p data-text="giftNote">Thank you for sharing in this special day with our family.</p>
             <div class="gift-grid" data-gift-grid>
                 <figure class="gift-card is-hidden" data-gift-card="one">
                     <img data-gift-image="one" alt="Gift QR code one">
