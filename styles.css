@@ -373,7 +373,7 @@ section {
 
 .details-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 18px;
 }
 
@@ -392,6 +392,50 @@ section {
 
 .gallery-section {
     text-align: center;
+}
+
+.location-section {
+    text-align: center;
+}
+
+.location-section p {
+    color: var(--muted);
+}
+
+.map-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.map-card {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
+}
+
+.map-frame {
+    overflow: hidden;
+    border-radius: 6px;
+    aspect-ratio: 4 / 3;
+    background: rgba(255, 255, 255, 0.88);
+}
+
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.map-card strong {
+    display: block;
+    margin-top: 14px;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.5rem;
+    color: var(--accent-strong);
 }
 
 .gallery-grid {
@@ -704,6 +748,29 @@ select {
     margin-bottom: 18px;
 }
 
+.video-invite-card {
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-frame {
+    margin-top: 24px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 32px rgba(40, 32, 26, 0.08);
+}
+
+.video-frame video {
+    display: block;
+    width: 100%;
+    max-height: 72svh;
+    background: #000;
+}
+
 .invite-badge {
     display: inline-flex;
     align-items: center;
@@ -776,7 +843,8 @@ select {
     .rsvp-layout,
     .rsvp-card .form-grid,
     .attire-guidance,
-    .gift-grid {
+    .gift-grid,
+    .map-grid {
         grid-template-columns: 1fr;
     }
 
