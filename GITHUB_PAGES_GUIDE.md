@@ -10,9 +10,11 @@ This invitation is a static website. Visitors can view it, open the animated inv
 - `rsvp.html` is the RSVP form page.
 - `rsvp.js` sends RSVP submissions to your chosen endpoint.
 - `godparent.html` is the separate godparent invitation page.
-- `godparent.js` sends godparent confirmations to your chosen endpoint.
+- `godparent.js` powers the Ninong or Ninang video invitation page.
+- `godparent-form.html` is the confirmation form page after the invitee accepts.
+- `godparent-form.js` sends godparent confirmations to your chosen endpoint.
 - `godparent-confirmation.html` is the thank-you page after a godparent responds.
-- `images/` holds the background art and Melinoe's photos.
+- `images/` holds the background art, Melinoe's photos, and the godparent invite videos.
 
 ## Editing The Invitation
 
@@ -24,8 +26,6 @@ This invitation is a static website. Visitors can view it, open the animated inv
 6. Open `script.js`.
 7. Find the block that starts with `const defaults = {`.
 8. Replace the whole object, from `{` through the matching `}`, with your copied data.
-
-The current date and time are placeholders because they were not provided yet, so you should update those before publishing.
 
 ## RSVP Storage
 
@@ -87,11 +87,12 @@ Only include the names of people who accepted the invitation. The main page alre
 
 ## Sending A Godparent Link
 
-You can send a personalized godparent page by adding a query string to the link:
+You can now send one shared video invitation link per role:
 
-`godparent.html?name=Juan%20Dela%20Cruz`
+- `godparent.html?type=ninong`
+- `godparent.html?type=ninang`
 
-That pre-fills the invited person's name on the page and in the form. Visitors can confirm their role, and once your Apps Script returns the confirmed list, the public invitation page updates the displayed godparents automatically.
+Each link opens the matching invite video first. If the guest accepts, they are taken to the form page and can send their confirmation there. Once your Apps Script returns the confirmed list, the public invitation page updates the displayed godparents automatically.
 
 ## GitHub Pages
 
