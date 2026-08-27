@@ -17,7 +17,7 @@
             <p data-confirmation-copy>Your response has been sent to the family. If you accepted the invitation, your name can now be included in the godparents list shown on the invitation page.</p>
             <div class="confirmation-actions">
                 <a class="button" href="index.html">Back to invitation</a>
-                <a class="button secondary-button" href="godparent.html">Open godparent page</a>
+                <a class="button secondary-button" data-return-link href="godparent.html?type=ninong">Open godparent page</a>
             </div>
         </section>
     </main>
@@ -26,8 +26,14 @@
         const params = new URLSearchParams(window.location.search);
         const name = String(params.get("name") || "").trim();
         const status = String(params.get("status") || "").trim();
+        const type = String(params.get("type") || "").trim().toLowerCase();
         const heading = document.querySelector("[data-confirmation-heading]");
         const copy = document.querySelector("[data-confirmation-copy]");
+        const returnLink = document.querySelector("[data-return-link]");
+
+        if (returnLink) {
+            returnLink.href = `godparent.html?type=${type === "ninang" ? "ninang" : "ninong"}`;
+        }
 
         if (status === "Confirmed") {
             heading.textContent = name ? `Thank you, ${name}` : "Thank you for accepting";
