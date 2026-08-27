@@ -8,7 +8,7 @@ const defaults = {
     reception: "Kenny Rogers Southwoods",
     receptionAddress: "Block 2, Lot 2, Southwoods Ecocentrum Business Park, Ecocentrum Blvd, City of Bi\u00f1an, Laguna",
     rsvp: "Please RSVP using the form so we can keep an accurate guest list and headcount.",
-    attireNote: "We would love for everyone to come in neat church attire with a graceful, celebratory feel. Soft neutrals, warm beige, champagne, cream, and gentle earth tones are warmly encouraged, while very casual wear and loud prints are best avoided.",
+    attireNote: "We would love for everyone to come in polished church attire inspired by Melinoe's teddy bear and blush celebration theme. Soft pinks, dusty rose, warm beige, cream, and gentle mocha tones are warmly encouraged, while denim, loud prints, and very dark tones are best avoided.",
     contactNote: "Please RSVP through the form. For any questions or clarifications, message Aris or Jovel in Messenger.",
     blessingNote: "Your presence and prayers are more than enough. If you would also like to bless Melinoe with a monetary gift, you may use the QR codes below.",
     giftNote: "Thank you for celebrating this meaningful day with our family. We will clear the RSVP list after the event.",
@@ -19,7 +19,7 @@ const defaults = {
     rsvpLink: "rsvp.html",
     giftQrOne: "images/QR Gotyme.jfif",
     giftQrTwo: "images/QR Vybe.jfif",
-    theme: "gold"
+    theme: "blush"
 };
 
 const storageKey = "baptismInvitationTemplate";
