@@ -12,47 +12,21 @@
 <body class="invitation-opened" data-theme="gold">
     <main class="rsvp-shell">
         <div class="rsvp-layout">
-            <section class="rsvp-card">
+            <section class="rsvp-card video-invite-card">
                 <a class="back-link" href="index.html">Back to invitation</a>
-                <p class="eyebrow">Godparent Invitation</p>
-                <h1>A special request for <span data-invitee-name>You</span></h1>
-                <p class="helper-text">With love and gratitude, Mark Aris Almase and Jovel Edria Almase would be honored to have you stand as a godparent for Melinoe Zyla Edria Almase.</p>
-                <div class="invite-badge">
-                    Invited godparent:
-                    <strong data-invitee-name-badge>Your name here</strong>
+                <p class="eyebrow">Special Invitation</p>
+                <h1 data-invite-heading>A heartfelt invitation to be a godparent</h1>
+                <p class="helper-text" data-invite-copy>With love and gratitude, Mark Aris Almase and Jovel Edria Almase would be honored to invite you to stand as godparent for Melinoe Zyla Edria Almase.</p>
+                <div class="video-frame">
+                    <video data-invite-video controls playsinline preload="metadata">
+                        <source src="images/Ninong.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-                <div class="note-panel">
-                    <p>Please confirm through the form below. Once confirmed, your name can be included in the published godparents list on the invitation page.</p>
+                <div class="hero-actions center-actions">
+                    <a class="button" data-accept-link href="godparent-form.html?type=ninong">Accept Invitation</a>
+                    <a class="button secondary-button" href="index.html">Back to main invitation</a>
                 </div>
-
-                <form data-godparent-form novalidate>
-                    <div class="form-grid">
-                        <label>
-                            Full name
-                            <input name="fullName" type="text" required>
-                        </label>
-                        <label>
-                            Contact details
-                            <input name="contactInfo" type="text" placeholder="Messenger name, mobile number, or email" required>
-                        </label>
-                        <label>
-                            Your response
-                            <select name="attendance" required>
-                                <option value="">Select one</option>
-                                <option value="Confirmed">I am honored to accept</option>
-                                <option value="Unable to accept">I am unable to accept</option>
-                            </select>
-                        </label>
-                        <input name="role" type="hidden" value="Godparent">
-                        <label class="full-width">
-                            Message for the family
-                            <textarea name="message" rows="4" placeholder="Optional"></textarea>
-                        </label>
-                    </div>
-
-                    <button class="button" type="submit">Confirm Invitation</button>
-                    <p class="status-text" data-status-text></p>
-                </form>
             </section>
         </div>
     </main>
