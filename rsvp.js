@@ -1,7 +1,9 @@
 const RSVP_ENDPOINT = "https://script.google.com/macros/s/AKfycbztuMC_kk9kF6PDIg8BWIYCsnOAgZbw7cm1dm3e25wcsWpRFlqJPFWHQBw-Wy0rr6-LVQ/exec";
 const RSVP_SHEET_URL = "https://docs.google.com/spreadsheets/d/1AQc45OvlTVjf67y8ygLsjK6eE8tf1qIknn-o8iasG7o/edit?usp=sharing";
 const RSVP_CSV_URL = "https://docs.google.com/spreadsheets/d/1AQc45OvlTVjf67y8ygLsjK6eE8tf1qIknn-o8iasG7o/export?format=csv&gid=0";
-const MAX_PAX = 40;
+const MAX_PAX = 50;
+
+let latestCapacity = null;
 
 function serializeForm(form) {
     const data = new FormData(form);
@@ -66,22 +68,49 @@ async function getCurrentHeadcount() {
 }
 
 async function refreshCapacity(statusText) {
-    const capacityText = document.querySelector("[data-capacity-text]");
-    if (!capacityText) {
-        return null;
-    }
-
     try {
         const currentHeadcount = await getCurrentHeadcount();
         const remaining = Math.max(0, MAX_PAX - currentHeadcount);
-        capacityText.textContent = `Guest list capacity: ${currentHeadcount}/${MAX_PAX} pax confirmed. ${remaining} slot${remaining === 1 ? "" : "s"} remaining.`;
-        return { currentHeadcount, remaining };
-    } catch {
-        capacityText.textContent = `Guest list capacity: ${MAX_PAX} pax maximum. Live count unavailable right now.`;
+        latestCapacity = { currentHeadcount, remaining };
         if (statusText) {
-            statusText.textContent = "The RSVP endpoint is ready, but the live guest count could not be read from the sheet just now.";
+            statusText.textContent = "";
+        }
+        return latestCapacity;
+    } catch {
+        latestCapacity = null;
+        if (statusText) {
+            statusText.textContent = "";
         }
         return null;
+    }
+}
+
+function updateSubmitAvailability(form, statusText) {
+    const submitButton = form.querySelector("[data-submit-rsvp]");
+    if (!submitButton) {
+        return;
+    }
+
+    const payload = serializeForm(form);
+    const hasCapacityLimit = payload.totalPartySize > MAX_PAX;
+    const hasLiveCapacityConflict = Boolean(
+        latestCapacity &&
+        payload.attendance === "Attending" &&
+        payload.totalPartySize > latestCapacity.remaining
+    );
+
+    submitButton.disabled = hasCapacityLimit || hasLiveCapacityConflict;
+
+    if (statusText && !submitButton.disabled && statusText.textContent.startsWith("Not enough")) {
+        statusText.textContent = "";
+    }
+
+    if (statusText && submitButton.disabled && hasLiveCapacityConflict) {
+        statusText.textContent = "Not enough slots remain for the selected party size.";
+    }
+
+    if (statusText && submitButton.disabled && hasCapacityLimit) {
+        statusText.textContent = "Please reduce the number of guests in this RSVP.";
     }
 }
 
@@ -95,8 +124,11 @@ function bindForm() {
     }
 
     toggle.addEventListener("change", updateGuestFields);
+    form.addEventListener("input", () => updateSubmitAvailability(form, statusText));
+    form.addEventListener("change", () => updateSubmitAvailability(form, statusText));
     updateGuestFields();
-    refreshCapacity();
+    updateSubmitAvailability(form, statusText);
+    refreshCapacity(statusText).then(() => updateSubmitAvailability(form, statusText));
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -116,9 +148,10 @@ function bindForm() {
             return;
         }
 
-        const capacity = await refreshCapacity();
+        const capacity = await refreshCapacity(statusText);
+        updateSubmitAvailability(form, statusText);
         if (capacity && payload.totalPartySize > capacity.remaining) {
-            statusText.textContent = `Only ${capacity.remaining} slot${capacity.remaining === 1 ? "" : "s"} remain. Please adjust your RSVP entry.`;
+            statusText.textContent = "Not enough slots remain for the selected party size.";
             return;
         }
 
