@@ -73,6 +73,10 @@
             <input data-field="church" type="text">
         </label>
         <label>
+            Church address
+            <textarea data-field="churchAddress" rows="3"></textarea>
+        </label>
+        <label>
             Reception venue
             <input data-field="reception" type="text">
         </label>
@@ -113,6 +117,10 @@
             <input data-field="receptionLink" type="url">
         </label>
         <label>
+            Shared route link
+            <input data-field="routeLink" type="url">
+        </label>
+        <label>
             RSVP page link
             <input data-field="rsvpLink" type="text">
         </label>
@@ -139,10 +147,10 @@
             <div class="event-strip" aria-label="Event summary">
                 <span data-text="date">December 12, 2026</span>
                 <span data-text="time">9:30 AM, please arrive at least 30 minutes before the ceremony.</span>
-                <span data-text="church">Sto. Nino Parish de Cebu</span>
+                <span data-text="church">Sto. Ni&ntilde;o de Cebu Parish</span>
             </div>
             <div class="hero-actions">
-                <a class="button" data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu" target="_blank" rel="noreferrer">Get Directions</a>
+                <a class="button" data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=14.3317,121.0517" target="_blank" rel="noreferrer">Get Directions</a>
                 <a class="button secondary-button" data-link="rsvpLink" href="rsvp.html">RSVP</a>
             </div>
         </div>
@@ -158,9 +166,10 @@
         <section class="details-grid" aria-label="Event details">
             <article>
                 <p class="eyebrow">Ceremony</p>
-                <h2 data-text="church">Sto. Nino Parish de Cebu</h2>
+                <h2 data-text="church">Sto. Ni&ntilde;o de Cebu Parish</h2>
+                <p data-text="churchAddress">Southwoods Properties / Southwoods Exit, Enterprise Ave (San Agustin Drive area), Bi&ntilde;an City, Laguna 4024, Philippines</p>
                 <p><span data-text="date">December 12, 2026</span> at <span data-text="time">9:30 AM, please arrive at least 30 minutes before the ceremony.</span></p>
-                <a data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=Sto.+Nino+Parish+de+Cebu" target="_blank" rel="noreferrer">View church map</a>
+                <a data-link="ceremonyLink" href="https://www.google.com/maps/search/?api=1&query=14.3317,121.0517" target="_blank" rel="noreferrer">View church pin</a>
             </article>
             <article>
                 <p class="eyebrow">Reception</p>
@@ -178,28 +187,19 @@
 
         <section class="location-section">
             <p class="eyebrow">Locations</p>
-            <h2>Ceremony and reception map</h2>
-            <p>Use the maps below to preview both venues and plan your route for the day.</p>
+            <h2>Ceremony to reception route</h2>
+            <p>The church and reception are close to each other, so this route view shows both locations together for easier planning.</p>
             <div class="map-grid">
                 <article class="map-card">
                     <div class="map-frame">
                         <iframe
-                            title="Sto. Nino Parish de Cebu map"
-                            src="https://www.google.com/maps?q=Sto.+Nino+Parish+de+Cebu&output=embed"
+                            title="Route from Sto. Niño de Cebu Parish to Kenny Rogers Southwoods"
+                            src="https://www.google.com/maps?saddr=14.3317,121.0517&daddr=Kenny+Rogers+Southwoods+Block+2+Lot+2+Southwoods+Ecocentrum+Business+Park+Ecocentrum+Blvd+City+of+Bi%C3%B1an+Laguna&output=embed"
                             loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <strong data-text="church">Sto. Nino Parish de Cebu</strong>
-                </article>
-                <article class="map-card">
-                    <div class="map-frame">
-                        <iframe
-                            title="Kenny Rogers Southwoods map"
-                            src="https://www.google.com/maps?q=Kenny+Rogers+Southwoods+Block+2+Lot+2+Southwoods+Ecocentrum+Business+Park+Ecocentrum+Blvd+City+of+Bi%C3%B1an+Laguna&output=embed"
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                    <strong data-text="reception">Kenny Rogers Southwoods</strong>
+                    <strong>Sto. Ni&ntilde;o de Cebu Parish to Kenny Rogers Southwoods</strong>
+                    <a data-link="routeLink" href="https://www.google.com/maps/dir/14.3317,121.0517/Kenny+Rogers+Southwoods+Block+2+Lot+2+Southwoods+Ecocentrum+Business+Park+Ecocentrum+Blvd+City+of+Bi%C3%B1an+Laguna" target="_blank" rel="noreferrer">Open shared route</a>
                 </article>
             </div>
         </section>
