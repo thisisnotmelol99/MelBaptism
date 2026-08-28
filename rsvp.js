@@ -14,6 +14,7 @@ function serializeForm(form) {
         : 0;
 
     return {
+        formType: "rsvp",
         submittedAt: new Date().toISOString(),
         fullName: String(data.get("fullName") || "").trim(),
         contactInfo: String(data.get("contactInfo") || "").trim(),
